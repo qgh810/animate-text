@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>demo1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <script type="text/javascript" src="../dist/animated-text.js"></script>
+
+    <style>
+      html, body {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+      }
+      .app-root {
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        background: #fff;
+        overflow: auto;
+      }
+      .app-root {
+        width: 300px;
+        text-align: center;
+      }
+      .string {
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-root">
+      <span class="string">我是需要动画出现的文字我是需要动画出现的文字我是需要动画出现的文字我是需要动画出现的文字!</span>
+      <br>
+      <span class="number">-10000</span>
+
+    </div>
+  </body>
+  <script>
+    window.onload = function () {
+      var animationText = new At('.app-root .string', {
+        time: 1000,
+        isNumber: false
+      })
+
+      var animationNumber = new At('.app-root .number', {
+        time: 500,
+        isNumber: true,
+        startNumber: 0,
+        changeCount: 25
+      })
+
+    }
+  </script>
+</html>
