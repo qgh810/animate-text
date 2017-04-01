@@ -41,12 +41,12 @@
   </body>
   <script>
     window.onload = function () {
-      var animationText = new At('.app-root .string', {
+      var animatedText = new AnimatedText('.app-root .string', {
         time: 1000,
         isNumber: false
       })
 
-      var animationNumber = new At('.app-root .number', {
+      var animatedNumber = new AnimatedText('.app-root .number', {
         time: 500,
         isNumber: true,
         startNumber: 0,
