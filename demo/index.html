@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>demo1</title>
+    <title>demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <script type="text/javascript" src="../dist/animated-text.js"></script>
 
@@ -24,39 +24,85 @@
         overflow: auto;
       }
       .app-root {
-        width: 300px;
-        text-align: center;
+        width: 100%;
       }
-      .string {
+      .part {
+        float: left;
+        width: 100%;
+        max-width: 500px;
+        margin-bottom: 30px;
+      }
+      .demo {
+        width: 100%;
+        max-width: 400px;
+        float: left;
+        color: #666;
+        height: 150px;
+      }
+      .play-btn {
+        float: right;
+        padding: 3px 6px;
+        border: 1px solid green;
+        border-radius: 3px;
+        font-size: 14px;
+        color: green;
+        cursor: pointer;
+        background: #fff;
       }
     </style>
   </head>
   <body>
     <div class="app-root">
-      <span class="string">我是需要动画出现的文字我是需要动画出现的文字我是需要动画出现的文字我是需要动画出现的文字!</span>
-      <br>
-      <span class="number">-10000.7</span>
+      <div class="part">
+        <div class="demo">
+          <span class="string">
+            我是动画文字!<br>
+            我是动画文字!<br>
+            可以自定义动画时长,<br>
+            会保留原有文字样式, <br>
+            配合文字左右对齐方式等样式会有不一样的效果!
+          </span>
+        </div>
+        <div class="play-btn" id="btn1">
+          重新播放
+        </div>
+      </div>
+      <div class="part">
+        <div class="demo">
+          <span class="number">66666.666</span>
+        </div>
+        <div class="play-btn" id="btn2">
+          重新播放
+        </div>
+      </div>
 
     </div>
   </body>
   <script>
     window.onload = function () {
-      var animatedText = new AnimatedText('.app-root .string', {
-        time: 1000,
-        isNumber: false
-      })
+      var animatedText = new AnimatedText('.app-root .string', 800)
 
       var animatedNumber = new AnimatedText('.app-root .number', {
-        time: 500,
+        time: 600,
         isNumber: true,
         startNumber: 0,
-        changeCount: 25
+        changeCount: 48
       })
 
-      setTimeout(() => {
-        document.querySelector('.app-root .string').innerText = '453423.3234'
-        animatedText.play(3000)
-      }, 3000)
+      var btn1 = document.getElementById('btn1')
+      btn1.addEventListener('click', function () {
+        animatedText.play()
+      }, false)
+
+      var btn2 = document.getElementById('btn2')
+      btn2.addEventListener('click', function () {
+        animatedNumber.play()
+      }, false)
+
+      // setTimeout(() => {
+      //   document.querySelector('.app-root .string').innerText = '453423.3234'
+      //   animatedText.play(3000)
+      // }, 3000)
 
     }
   </script>

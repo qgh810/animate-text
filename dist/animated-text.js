@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -116,11 +116,36 @@ function checkNode(el) {
 "use strict";
 
 
+var _config = __webpack_require__(2);
+
+function showWarn(str) {
+  console.warn(str + ' 请参考相关文档: ' + _config.DOCUMENT_ADDR);
+}
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var DOCUMENT_ADDR = exports.DOCUMENT_ADDR = 'https://github.com/qgh810/animated-text';
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _check = __webpack_require__(0);
 
-var _log = __webpack_require__(2);
+var _log = __webpack_require__(1);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -241,7 +266,15 @@ var AnimatedText = function () {
     value: function play() {
       var time = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.time;
 
-      this.initData(this.el, time) && this.init();
+      clearInterval(this.tid);
+      this.el.innerText = this.isNumber ? this.number : this.text;
+      var options = {
+        time: this.time,
+        isNumber: this.isNumber,
+        startNumber: this.startNumber,
+        changeCount: this.changeCount
+      };
+      this.initData(this.el, options) && this.init();
     }
   }]);
 
@@ -249,31 +282,6 @@ var AnimatedText = function () {
 }();
 
 module.exports = AnimatedText;
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _config = __webpack_require__(3);
-
-function showWarn(str) {
-  console.warn(str + ' 请参考相关文档: ' + _config.DOCUMENT_ADDR);
-}
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var DOCUMENT_ADDR = exports.DOCUMENT_ADDR = 'https://github.com/qgh810/animated-text';
 
 /***/ })
 /******/ ]);

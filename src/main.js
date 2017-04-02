@@ -96,7 +96,15 @@ class AnimatedText {
   }
 
   play (time = this.time) {
-    this.initData(this.el, time) && this.init()
+    clearInterval(this.tid)
+    this.el.innerText = this.isNumber ? this.number : this.text
+    var options = {
+      time: this.time,
+      isNumber: this.isNumber,
+      startNumber: this.startNumber,
+      changeCount: this.changeCount
+    }
+    this.initData(this.el, options) && this.init()
   }
 }
 
