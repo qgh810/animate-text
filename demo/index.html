@@ -35,7 +35,7 @@
     <div class="app-root">
       <span class="string">我是需要动画出现的文字我是需要动画出现的文字我是需要动画出现的文字我是需要动画出现的文字!</span>
       <br>
-      <span class="number">-10000</span>
+      <span class="number">-10000.7</span>
 
     </div>
   </body>
@@ -52,6 +52,11 @@
         startNumber: 0,
         changeCount: 25
       })
+
+      setTimeout(() => {
+        document.querySelector('.app-root .string').innerText = '453423.3234'
+        animatedText.play(3000)
+      }, 3000)
 
     }
   </script>

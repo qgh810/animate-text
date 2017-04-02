@@ -1,6 +1,7 @@
 import { checkNode } from './utils/check'
+import { showWarn } from './utils/log'
 
-class At {
+class AnimatedText {
   constructor (el, options) {
     this.initData(el, options) && this.init()
     this.play = this.play.bind(this)
@@ -13,6 +14,7 @@ class At {
     this.el = checkNode(el)
     if (!this.el) return
     options = this.checkOptions(options)
+    this.options = options
     if (options.isNumber) {
       this.number = Number(this.el.innerText)
       if (!this.number && this.number !== 0) {
@@ -35,9 +37,7 @@ class At {
    * 检查并且初始化options
    */
   checkOptions (options) {
-    if (typeof options === 'number') {
-      options = {time: options}
-    }
+    if (typeof options === 'number') options = {time: options}
     options = options || {}
     let baseOptions = {
       time: 500,
@@ -75,10 +75,14 @@ class At {
     let decimalLength = Math.max(targetNumberDecimalLength, StartNumberDecimalLength)
     let d = this.number - this.startNumber
     let everyD = (d / changeCount).toFixed(decimalLength) - 0
+    if (everyD === 0) {
+      showWarn('差值过小无法动画')
+      return this.el.innerText = targetNumber
+    }
     var currNumber = this.startNumber
     this.tid = setInterval(() => {
       currNumber = (currNumber + everyD).toFixed(decimalLength) - 0
-      if (currNumber - targetNumber <= everyD) {
+      if (Math.abs(currNumber - targetNumber) <= Math.abs(everyD)) {
         this.el.innerText = targetNumber
         return clearInterval(this.tid)
       }
@@ -92,9 +96,8 @@ class At {
   }
 
   play (time = this.time) {
-    this.init(time)
+    this.initData(this.el, time) && this.init()
   }
 }
 
-window.At = At
-module.exports = At
+module.exports = AnimatedText

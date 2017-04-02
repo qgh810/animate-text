@@ -120,11 +120,13 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _check = __webpack_require__(0);
 
+var _log = __webpack_require__(2);
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var At = function () {
-  function At(el, options) {
-    _classCallCheck(this, At);
+var AnimatedText = function () {
+  function AnimatedText(el, options) {
+    _classCallCheck(this, AnimatedText);
 
     this.initData(el, options) && this.init();
     this.play = this.play.bind(this);
@@ -135,12 +137,13 @@ var At = function () {
    */
 
 
-  _createClass(At, [{
+  _createClass(AnimatedText, [{
     key: 'initData',
     value: function initData(el, options) {
       this.el = (0, _check.checkNode)(el);
       if (!this.el) return;
       options = this.checkOptions(options);
+      this.options = options;
       if (options.isNumber) {
         this.number = Number(this.el.innerText);
         if (!this.number && this.number !== 0) {
@@ -166,9 +169,7 @@ var At = function () {
   }, {
     key: 'checkOptions',
     value: function checkOptions(options) {
-      if (typeof options === 'number') {
-        options = { time: options };
-      }
+      if (typeof options === 'number') options = { time: options };
       options = options || {};
       var baseOptions = {
         time: 500,
@@ -215,10 +216,14 @@ var At = function () {
       var decimalLength = Math.max(targetNumberDecimalLength, StartNumberDecimalLength);
       var d = this.number - this.startNumber;
       var everyD = (d / changeCount).toFixed(decimalLength) - 0;
+      if (everyD === 0) {
+        (0, _log.showWarn)('差值过小无法动画');
+        return this.el.innerText = targetNumber;
+      }
       var currNumber = this.startNumber;
       this.tid = setInterval(function () {
         currNumber = (currNumber + everyD).toFixed(decimalLength) - 0;
-        if (currNumber - targetNumber <= everyD) {
+        if (Math.abs(currNumber - targetNumber) <= Math.abs(everyD)) {
           _this2.el.innerText = targetNumber;
           return clearInterval(_this2.tid);
         }
@@ -236,15 +241,39 @@ var At = function () {
     value: function play() {
       var time = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.time;
 
-      this.init(time);
+      this.initData(this.el, time) && this.init();
     }
   }]);
 
-  return At;
+  return AnimatedText;
 }();
 
-window.At = At;
-module.exports = At;
+module.exports = AnimatedText;
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _config = __webpack_require__(3);
+
+function showWarn(str) {
+  console.warn(str + ' 请参考相关文档: ' + _config.DOCUMENT_ADDR);
+}
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var DOCUMENT_ADDR = exports.DOCUMENT_ADDR = 'https://github.com/qgh810/animated-text';
 
 /***/ })
 /******/ ]);
