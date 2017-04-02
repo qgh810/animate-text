@@ -60,7 +60,9 @@ AnimateText接收两个参数, 例如: new AnimateText(element, options)
 <br>
 
 ###### options说明
+
 第二个参数options详细说明
+
 | 参数 | 类型 | 默认值 | 是否必填 | 描述 |
 | :---: |  :--- |  :---: |  :---: |  :--- |
 | time | Number | 500 | 否 | 动画持续的时间 |
