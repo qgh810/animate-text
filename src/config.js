@@ -1,1 +1,1 @@
-export const DOCUMENT_ADDR = 'https://github.com/qgh810/animated-text'
+export const DOCUMENT_ADDR = 'https://github.com/qgh810/animate-text'

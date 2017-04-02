@@ -1,34 +1,34 @@
 {
-  "name": "animated-text",
+  "name": "animate-text",
   "version": "0.0.1",
-  "description": "animated text",
-  "main": "dist/animated-text.js",
+  "description": "animate text",
+  "main": "dist/animate-text.js",
   "scripts": {
     "dev": "webpack --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/qgh810/animated-text.git"
+    "url": "git+https://github.com/qgh810/animate-text.git"
   },
   "keywords": [
     "animate",
     "animated",
     "animation",
-    "animated-text",
+    "animate-text",
     "animation-text",
     "animation text",
     "animate text",
     "animated text",
-    "animated-text",
+    "animate-text",
     "js"
   ],
   "author": "qiuguohui",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/qgh810/animated-text/issues"
+    "url": "https://github.com/qgh810/animate-text/issues"
   },
-  "homepage": "https://github.com/qgh810/animated-text#readme",
+  "homepage": "https://github.com/qgh810/animate-text#readme",
   "devDependencies": {
     "babel-core": "^6.24.0",
     "babel-loader": "^6.4.0",

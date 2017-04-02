@@ -1,5 +1,3 @@
-## dnd.js
+## animate-text
 
-##### 拖放库 drag and drop
-
-[查看DEMO](http://qgh810.github.io/src/dnd/index.html)
+##### 文字动画和数字动画 animate text

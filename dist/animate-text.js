@@ -2,11 +2,11 @@
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
 	else if(typeof define === 'function' && define.amd)
-		define("AnimatedText", [], factory);
+		define("AnimateText", [], factory);
 	else if(typeof exports === 'object')
-		exports["AnimatedText"] = factory();
+		exports["AnimateText"] = factory();
 	else
-		root["AnimatedText"] = factory();
+		root["AnimateText"] = factory();
 })(this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -132,7 +132,7 @@ function showWarn(str) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var DOCUMENT_ADDR = exports.DOCUMENT_ADDR = 'https://github.com/qgh810/animated-text';
+var DOCUMENT_ADDR = exports.DOCUMENT_ADDR = 'https://github.com/qgh810/animate-text';
 
 /***/ }),
 /* 3 */
@@ -149,9 +149,9 @@ var _log = __webpack_require__(1);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var AnimatedText = function () {
-  function AnimatedText(el, options) {
-    _classCallCheck(this, AnimatedText);
+var AnimateText = function () {
+  function AnimateText(el, options) {
+    _classCallCheck(this, AnimateText);
 
     this.initData(el, options) && this.init();
     this.play = this.play.bind(this);
@@ -162,7 +162,7 @@ var AnimatedText = function () {
    */
 
 
-  _createClass(AnimatedText, [{
+  _createClass(AnimateText, [{
     key: 'initData',
     value: function initData(el, options) {
       this.el = (0, _check.checkNode)(el);
@@ -200,7 +200,7 @@ var AnimatedText = function () {
         time: 500,
         isNumber: false,
         startNumber: 0,
-        changeCount: 24
+        changeCount: 32
       };
       for (var option in baseOptions) {
         !options[option] && (options[option] = baseOptions[option]);
@@ -233,7 +233,7 @@ var AnimatedText = function () {
     value: function playNumberAnimation(time) {
       var _this2 = this;
 
-      var changeCount = 31;
+      var changeCount = this.changeCount;
       var targetNumber = this.number;
       if (!targetNumber === 0) return;
       var targetNumberDecimalLength = this.getDecimalLength(targetNumber);
@@ -248,7 +248,7 @@ var AnimatedText = function () {
       var currNumber = this.startNumber;
       this.tid = setInterval(function () {
         currNumber = (currNumber + everyD).toFixed(decimalLength) - 0;
-        if (Math.abs(currNumber - targetNumber) <= Math.abs(everyD)) {
+        if (Math.abs(currNumber - targetNumber) < Math.abs(everyD)) {
           _this2.el.innerText = targetNumber;
           return clearInterval(_this2.tid);
         }
@@ -278,10 +278,10 @@ var AnimatedText = function () {
     }
   }]);
 
-  return AnimatedText;
+  return AnimateText;
 }();
 
-module.exports = AnimatedText;
+module.exports = AnimateText;
 
 /***/ })
 /******/ ]);

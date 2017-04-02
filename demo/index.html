@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <script type="text/javascript" src="../dist/animated-text.js"></script>
+    <script type="text/javascript" src="../dist/animate-text.js"></script>
 
     <style>
       html, body {
@@ -17,6 +17,8 @@
       }
       .app-root {
         width: 100%;
+        max-width: 560px;
+        margin: 0 auto;
         height: 100%;
         padding: 20px;
         box-sizing: border-box;
@@ -26,18 +28,33 @@
       .app-root {
         width: 100%;
       }
+      .header {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 50px;
+        font-size: 14px;
+        color: #999;
+      }
+      .header h1 {
+        color: #333;
+        font-size: 20px;
+      }
       .part {
         float: left;
         width: 100%;
         max-width: 500px;
         margin-bottom: 30px;
+        margin-right: 3000px;
       }
       .demo {
         width: 100%;
         max-width: 400px;
         float: left;
         color: #666;
-        height: 150px;
+        height: 120px;
+      }
+      .demo2 {
+        height: 60px;
       }
       .play-btn {
         float: right;
@@ -53,11 +70,16 @@
   </head>
   <body>
     <div class="app-root">
+      <header class="header">
+        <h1>animate-text 文字动画</h1>
+        <div class="addr">
+          <span>说明文档: </span><a id="addr" href="">https://github.com/qgh810/animate-text</a>
+        </div>
+      </header>
       <div class="part">
         <div class="demo">
           <span class="string">
-            我是动画文字!<br>
-            我是动画文字!<br>
+            动画文字<br>
             可以自定义动画时长,<br>
             会保留原有文字样式, <br>
             配合文字左右对齐方式等样式会有不一样的效果!
@@ -68,7 +90,7 @@
         </div>
       </div>
       <div class="part">
-        <div class="demo">
+        <div class="demo demo2">
           <span class="number">66666.666</span>
         </div>
         <div class="play-btn" id="btn2">
@@ -80,29 +102,30 @@
   </body>
   <script>
     window.onload = function () {
-      var animatedText = new AnimatedText('.app-root .string', 800)
+      var animateText = new AnimateText('.app-root .string', 1200)
 
-      var animatedNumber = new AnimatedText('.app-root .number', {
-        time: 600,
+      var animateNumber = new AnimateText('.app-root .number', {
+        time: 1000,
         isNumber: true,
         startNumber: 0,
-        changeCount: 48
+        changeCount: 32
       })
 
       var btn1 = document.getElementById('btn1')
       btn1.addEventListener('click', function () {
-        animatedText.play()
+        animateText.play()
       }, false)
 
       var btn2 = document.getElementById('btn2')
       btn2.addEventListener('click', function () {
-        animatedNumber.play()
+        animateNumber.play()
       }, false)
 
-      // setTimeout(() => {
-      //   document.querySelector('.app-root .string').innerText = '453423.3234'
-      //   animatedText.play(3000)
-      // }, 3000)
+      var addrBtn = document.getElementById('addr')
+      addrBtn.addEventListener('click', function (e) {
+        e.preventDefault()
+        window.open('https://github.com/qgh810/animate-text')
+      }, false)
 
     }
   </script>

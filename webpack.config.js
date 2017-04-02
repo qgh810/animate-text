@@ -1,12 +1,12 @@
 var path = require('path');
 var webpack = require('webpack')
-var libraryName = 'AnimatedText'
+var libraryName = 'AnimateText'
 
 module.exports = {
   entry: "./src/main.js",
   output: {
     path: __dirname,
-    filename: "dist/animated-text.js",
+    filename: "dist/animate-text.js",
     library: libraryName,
     libraryTarget: 'umd',
     umdNamedDefine: true

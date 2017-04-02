@@ -1,7 +1,7 @@
 import { checkNode } from './utils/check'
 import { showWarn } from './utils/log'
 
-class AnimatedText {
+class AnimateText {
   constructor (el, options) {
     this.initData(el, options) && this.init()
     this.play = this.play.bind(this)
@@ -43,7 +43,7 @@ class AnimatedText {
       time: 500,
       isNumber: false,
       startNumber: 0,
-      changeCount: 24
+      changeCount: 32
     }
     for (let option in baseOptions) {
       !options[option] && (options[option] = baseOptions[option])
@@ -67,7 +67,7 @@ class AnimatedText {
   }
 
   playNumberAnimation (time) {
-    let changeCount = 31
+    let changeCount = this.changeCount
     let targetNumber = this.number
     if (!targetNumber === 0) return
     let targetNumberDecimalLength = this.getDecimalLength(targetNumber)
@@ -82,7 +82,7 @@ class AnimatedText {
     var currNumber = this.startNumber
     this.tid = setInterval(() => {
       currNumber = (currNumber + everyD).toFixed(decimalLength) - 0
-      if (Math.abs(currNumber - targetNumber) <= Math.abs(everyD)) {
+      if (Math.abs(currNumber - targetNumber) < Math.abs(everyD)) {
         this.el.innerText = targetNumber
         return clearInterval(this.tid)
       }
@@ -108,4 +108,4 @@ class AnimatedText {
   }
 }
 
-module.exports = AnimatedText
+module.exports = AnimateText
