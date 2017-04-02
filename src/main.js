@@ -30,6 +30,7 @@ class AnimateText {
     this.isNumber = options.isNumber
     this.time = options.time
     this.el.innerText = ''
+    this.onAnimated = options.onAnimated
     return true
   }
 
@@ -43,7 +44,8 @@ class AnimateText {
       time: 500,
       isNumber: false,
       startNumber: 0,
-      changeCount: 32
+      changeCount: 32,
+      onAnimated () {}
     }
     for (let option in baseOptions) {
       !options[option] && (options[option] = baseOptions[option])
@@ -60,7 +62,10 @@ class AnimateText {
     var currTextArr = []
     this.tid = setInterval(() => {
       var word = textArr.shift()
-      if (!word) return clearInterval(this.tid)
+      if (!word) {
+        this.onEnd()
+        return clearInterval(this.tid)
+      }
       currTextArr.push(word)
       this.el.innerText = currTextArr.join('')
     }, time / this.textArr.length)
@@ -84,6 +89,7 @@ class AnimateText {
       currNumber = (currNumber + everyD).toFixed(decimalLength) - 0
       if (Math.abs(currNumber - targetNumber) < Math.abs(everyD)) {
         this.el.innerText = targetNumber
+        this.onEnd()
         return clearInterval(this.tid)
       }
       this.el.innerText = currNumber
@@ -102,9 +108,18 @@ class AnimateText {
       time: this.time,
       isNumber: this.isNumber,
       startNumber: this.startNumber,
-      changeCount: this.changeCount
+      changeCount: this.changeCount,
+      onAnimated: this.onAnimated
     }
     this.initData(this.el, options) && this.init()
+  }
+
+  onEnd () {
+    let callBack = this.options.onAnimated
+    if (typeof callBack !== 'function') return
+    setTimeout(() => {
+      this.options.onAnimated()
+    }, 10)
   }
 }
 

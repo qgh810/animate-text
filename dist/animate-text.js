@@ -184,6 +184,7 @@ var AnimateText = function () {
       this.isNumber = options.isNumber;
       this.time = options.time;
       this.el.innerText = '';
+      this.onAnimated = options.onAnimated;
       return true;
     }
 
@@ -200,7 +201,8 @@ var AnimateText = function () {
         time: 500,
         isNumber: false,
         startNumber: 0,
-        changeCount: 32
+        changeCount: 32,
+        onAnimated: function onAnimated() {}
       };
       for (var option in baseOptions) {
         !options[option] && (options[option] = baseOptions[option]);
@@ -223,7 +225,10 @@ var AnimateText = function () {
       var currTextArr = [];
       this.tid = setInterval(function () {
         var word = textArr.shift();
-        if (!word) return clearInterval(_this.tid);
+        if (!word) {
+          _this.onEnd();
+          return clearInterval(_this.tid);
+        }
         currTextArr.push(word);
         _this.el.innerText = currTextArr.join('');
       }, time / this.textArr.length);
@@ -250,6 +255,7 @@ var AnimateText = function () {
         currNumber = (currNumber + everyD).toFixed(decimalLength) - 0;
         if (Math.abs(currNumber - targetNumber) < Math.abs(everyD)) {
           _this2.el.innerText = targetNumber;
+          _this2.onEnd();
           return clearInterval(_this2.tid);
         }
         _this2.el.innerText = currNumber;
@@ -272,9 +278,21 @@ var AnimateText = function () {
         time: this.time,
         isNumber: this.isNumber,
         startNumber: this.startNumber,
-        changeCount: this.changeCount
+        changeCount: this.changeCount,
+        onAnimated: this.onAnimated
       };
       this.initData(this.el, options) && this.init();
+    }
+  }, {
+    key: 'onEnd',
+    value: function onEnd() {
+      var _this3 = this;
+
+      var callBack = this.options.onAnimated;
+      if (typeof callBack !== 'function') return;
+      setTimeout(function () {
+        _this3.options.onAnimated();
+      }, 10);
     }
   }]);
 
