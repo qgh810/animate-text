@@ -68,8 +68,8 @@ AnimateText接收两个参数, 例如: new AnimateText(element, options)
 | startNumber | Number | 0 | 否 | 数字动画的开始数字 |
 | changeCount | Number | 32 | 否 | 数字动画变化次数 也就是数字经过多少次跳动才变为最终数字 |
 | onAnimated | Function | null | 否 | 动画结束监听函数 |
-
 <br>
+
 ##### 实例对象方法说明
 
 ```js
