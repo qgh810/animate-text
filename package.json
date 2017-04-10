@@ -1,6 +1,6 @@
 {
   "name": "animate-text",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "animate text",
   "main": "dist/animate-text.js",
   "scripts": {
