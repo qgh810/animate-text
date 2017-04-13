@@ -6,7 +6,7 @@
 
 轻巧的文字动画库, 使用简单, 文件大小4k<br>可以给文字添加出现动画, 支持字符串打字效果和数字变化效果, 支持监听动画结束事件[这里封装了vue组件](https://github.com/qgh810/animate-text/tree/master/vue)<br>项目持续更新和维护
 
-<img src="https://raw.githubusercontent.com/qgh810/qgh810.github.io/master/src/animate-text/assets/images/demo.gif" />
+<img src="https://raw.githubusercontent.com/qgh810/qgh810.github.io/master/demo/animate-text/assets/images/demo.gif" />
 <br>
 
 ### 安装方法
