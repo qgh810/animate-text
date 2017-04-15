@@ -2,7 +2,7 @@
 
 ##### 文字动画和数字动画 animate text
 
-[查看DEMO](http://qgh810.github.io/src/animate-text/index.html)
+[查看DEMO](http://qgh810.github.io/demo/animate-text/index.html)
 
 轻巧的文字动画库, 使用简单, 文件大小4k<br>可以给文字添加出现动画, 支持字符串打字效果和数字变化效果, 支持监听动画结束事件[这里封装了vue组件](https://github.com/qgh810/animate-text/tree/master/vue)<br>项目持续更新和维护
 
