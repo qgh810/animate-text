@@ -81,7 +81,7 @@
         from {
           color: blue;
           opacity: 0;
-          transform: rotate(65deg);
+          transform: rotate(25deg);
         }
         to {
           color: red;
@@ -93,7 +93,7 @@
         from {
           color: red;
           opacity: 0;
-          transform: rotate(-65deg);
+          transform: rotate(-25deg);
         }
         to {
           color: blue;
@@ -169,6 +169,11 @@
       var btn2 = document.getElementById('btn2')
       btn2.addEventListener('click', function () {
         animateNumber.play()
+      }, false)
+
+      var btn3 = document.getElementById('btn3')
+      btn3.addEventListener('click', function () {
+        animateText2.play()
       }, false)
 
       var addrBtn = document.getElementById('addr')

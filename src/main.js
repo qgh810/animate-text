@@ -115,7 +115,8 @@ class AnimateText {
       isNumber: this.isNumber,
       startNumber: this.startNumber,
       changeCount: this.changeCount,
-      onAnimated: this.onAnimated
+      onAnimated: this.onAnimated,
+      spanClassName: this.spanClassName
     }
     this.initData(this.el, options) && this.init()
   }
