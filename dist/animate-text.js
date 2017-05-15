@@ -183,6 +183,7 @@ var AnimateText = function () {
       }
       this.isNumber = options.isNumber;
       this.time = options.time;
+      this.spanClassName = options.spanClassName;
       this.el.innerText = '';
       this.onAnimated = options.onAnimated;
       return true;
@@ -229,8 +230,13 @@ var AnimateText = function () {
           _this.onEnd();
           return clearInterval(_this.tid);
         }
-        currTextArr.push(word);
-        _this.el.innerText = currTextArr.join('');
+        var span = document.createElement('span');
+        var br = document.createElement('br');
+        span.className = _this.spanClassName;
+        span.innerText = word;
+        _this.el.appendChild(word === '\n' ? br : span);
+        // currTextArr.push(word === '\n' ? '<br>' : `<span class="animate-text-text-span">${word}</span>`)
+        // this.el.innerHTML = currTextArr.join('')
       }, time / this.textArr.length);
     }
   }, {

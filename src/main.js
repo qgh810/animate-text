@@ -29,6 +29,7 @@ class AnimateText {
     }
     this.isNumber = options.isNumber
     this.time = options.time
+    this.spanClassName = options.spanClassName
     this.el.innerText = ''
     this.onAnimated = options.onAnimated
     return true
@@ -66,8 +67,13 @@ class AnimateText {
         this.onEnd()
         return clearInterval(this.tid)
       }
-      currTextArr.push(word)
-      this.el.innerText = currTextArr.join('')
+      let span = document.createElement('span')
+      let br = document.createElement('br')
+      span.className = this.spanClassName
+      span.innerText = word
+      this.el.appendChild(word === '\n' ? br : span)
+      // currTextArr.push(word === '\n' ? '<br>' : `<span class="animate-text-text-span">${word}</span>`)
+      // this.el.innerHTML = currTextArr.join('')
     }, time / this.textArr.length)
   }
 
