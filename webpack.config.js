@@ -6,7 +6,7 @@ module.exports = {
   entry: "./src/main.js",
   output: {
     path: __dirname,
-    filename: "dist/animate-text.js",
+    filename: "dist/animate-text.min.js",
     library: libraryName,
     libraryTarget: 'umd',
     umdNamedDefine: true
@@ -23,13 +23,13 @@ module.exports = {
     ]
   },
   plugins: [
-    // new webpack.optimize.UglifyJsPlugin({
-    //   output: {
-    //     comments: false,  // remove all comments
-    //   },
-    //   compress: {
-    //     warnings: false
-    //   }
-    // })
+    new webpack.optimize.UglifyJsPlugin({
+      output: {
+        comments: false,  // remove all comments
+      },
+      compress: {
+        warnings: false
+      }
+    })
   ]
 }

@@ -183,7 +183,7 @@ var AnimateText = function () {
       }
       this.isNumber = options.isNumber;
       this.time = options.time;
-      this.spanClassName = options.spanClassName;
+      this.spanClassName = options.spanClassName || 'animate-text-span';
       this.el.innerText = '';
       this.onAnimated = options.onAnimated;
       return true;
